@@ -7,7 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1NDeIpEm6RsXH1lMZzUvjHT8bo_BMIyKM
 """
 
-!pip install pandas Pillow reportlab pystrich matplotlib
 
 from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib.units import mm
