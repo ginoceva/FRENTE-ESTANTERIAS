@@ -1,5 +1,7 @@
+streamlit
 pandas
-Pillow
-reportlab
-pystrich
 matplotlib
+reportlab
+pillow
+pystrich
+openpyxl
