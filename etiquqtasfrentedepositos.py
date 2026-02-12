@@ -102,6 +102,20 @@ def generate_label_pdf(dataframe, output_filename):
         current_x = margin_x
         current_y = y_positions[label_on_page_count]
 
+                # --- CONTORNO PUNTEADO PARA CORTE ---
+        c.setLineWidth(1)
+        c.setDash(6, 4)  # 6 puntos línea, 4 puntos espacio
+        c.rect(
+            current_x,
+            current_y,
+            label_width_pt,
+            label_height_pt,
+            stroke=1,
+            fill=0
+        )
+        c.setDash()  # resetear a línea continua
+
+
         # --- 1. Código Data Matrix ---
         encoder = DataMatrixEncoder(ubicacion)
         datamatrix_img_data = encoder.get_imagedata()
