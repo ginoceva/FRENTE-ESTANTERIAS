@@ -102,18 +102,27 @@ def generate_label_pdf(dataframe, output_filename):
         current_x = margin_x
         current_y = y_positions[label_on_page_count]
 
-                # --- CONTORNO PUNTEADO PARA CORTE ---
-        c.setLineWidth(1)
-        c.setDash(6, 4)  # 6 puntos línea, 4 puntos espacio
-        c.rect(
-            current_x,
-            current_y,
-            label_width_pt,
-            label_height_pt,
+                 # --- CONTORNO PUNTEADO ESTILO GUÍA DE CORTE ---
+        padding_mm = 5  # separación interna del borde
+        padding_pt = padding_mm * mm
+
+        c.setLineWidth(2)
+        c.setStrokeColorRGB(0.4, 0.3, 0.25)  # marrón grisáceo tipo imprenta
+        c.setDash(8, 6)  # patrón más visible
+
+        c.roundRect(
+            current_x + padding_pt,
+            current_y + padding_pt,
+            label_width_pt - (2 * padding_pt),
+            label_height_pt - (2 * padding_pt),
+            10,  # radio de esquinas redondeadas
             stroke=1,
             fill=0
         )
-        c.setDash()  # resetear a línea continua
+
+        c.setDash()  # volver a línea normal
+        c.setStrokeColorRGB(0, 0, 0)  # volver a negro
+
 
 
         # --- 1. Código Data Matrix ---
